@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>                                          <head>
+  <title>Songs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://kit.fontawesome.com/1a02557296.js" crossorigin="anonymous"></script>
+  <style>
+* {
+    margin:0;
+    padding:0;
+    font-family:Helvetica;
+}
+body {
+    
+}
+h1 {
+    margin:20px 0%;
+}
+h1>marquee {
+    overflow:hidden;
+}
+
+#chn_img {
+    width:300px;
+    height:300px;
+    margin:20px auto;
+    display:block;
+    border-radius:6px;
+}
+
+.btns {
+    width:380px;
+    height:76px;
+    padding:0;
+    margin:0px auto;
+}
+
+.btns>button {
+    width:76px;
+    height:76px;
+    border:0;
+    margin:0px -1.6px;
+    padding:0;
+    font-size:1.4rem;
+    border-radius:50%;
+    background-color: transparent;
+}
+
+.btns>button:nth-child(1) {
+    font-size:1rem;
+}
+
+.btns2 {
+    width:152px;
+    height:76px;
+    padding:0;
+    margin:0px auto;
+}
+
+.btns2>button {
+    width:76px;
+    height:76px;
+    border:0;
+    margin:0px -1.6px;
+    padding:0;
+    font-size:1.4rem;
+    border-radius:50%;
+    background-color: transparent;
+}
+
+/*range*/
+input[type=range] {
+  height: 32px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 80%;
+  margin:0px 10%;
+ /* background-color:red;*/
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  animate: 0.2s;
+  background: rgba(0,0,0,0.2);
+  border-radius: 6px;
+  border: 0px solid #F3B8FF;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #545454;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -2.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #000000;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 2px #211F1A;
+  background: #000000;
+  border-radius: 0px;
+  border: 0px solid #F3B8FF;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 4px #000000;
+  border: 1px solid #000000;
+  height: 18px;
+  width: 8px;
+  border-radius: 5px;
+  background: #545454;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #000000;
+  border: 0px solid #F3B8FF;
+  border-radius: 0px;
+  box-shadow: 0px 0px 2px #211F1A;
+}
+input[type=range]::-ms-fill-upper {
+  background: #000000;
+  border: 0px solid #F3B8FF;
+  border-radius: 0px;
+  box-shadow: 0px 0px 2px #211F1A;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 4px #000000;
+  border: 1px solid #000000;
+  height: 24px;
+  width: 8px;
+  border-radius: 0px;
+  background: #545454;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #000000;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #000000;
+}
+  </style>
+  </head>
+  <body>
+   <h1><marquee>One_Direction_-_Night_Changes_-Lyrics-MP3160K</marquee></h1>
+   <img id="chn_img" src="https://randomuser.me/api/portraits/men/1.jpg" />
+   
+   <input id="prog" type="range" min="0" value="0" max="0" />
+   <audio id="my-audio" src="https://www.dropbox.com/scl/fi/ebvdeb98axr6wos5lsuwe/One_Direction_-_Night_Changes_-Lyrics-MP3160K.mp3?rlkey=z09zzwzwqfen7g8n7laltk8s8&st=ykdj9kpc&dl=1"></audio>
+  
+   <div class="btns">
+     <button>00:00</button>
+     <button onclick="mv5Minus()">
+       <i class="fa-solid fa-backward"></i>
+     </button>
+     <button onclick="playPause()">
+       <i class="fa-solid fa-play"></i>
+     </button>
+     <button onclick="mv5Plus()">
+       <i class="fa-solid fa-forward"></i>
+     </button>
+     <button onclick="volOnOff()">
+       <i class="fa-solid fa-volume-high"></i>
+     </button>
+   </div>
+   
+   <div class="btns2">
+     <button onclick="prevSong()">
+       <i class="fa-solid fa-backward-step"></i>
+     </button>
+     <button onclick="nextSong()">
+       <i class="fa-solid fa-forward-step"></i>  
+     </button>
+   </div>
+
+   <script>
+   
+function randPer() {
+    var v = Math.floor(Math.random() * 100);
+    return `https://randomuser.me/api/portraits/men/${v}.jpg`;
+}   
+   
+
+var songs = [
+"https://www.dropbox.com/scl/fi/ebvdeb98axr6wos5lsuwe/One_Direction_-_Night_Changes_-Lyrics-MP3160K.mp3?rlkey=z09zzwzwqfen7g8n7laltk8s8&st=ykdj9kpc&dl=1",
+"https://www.dropbox.com/scl/fi/mcn7smp5izdia0hxap5vb/Rosa_Linn_-_Snap_-_-Official_Eurovision_Music_Video-MP3160K.mp3?rlkey=fm6mrtjknire0qhkrdm7o4fep&st=8gnwopa3&dl=1",
+"https://www.dropbox.com/scl/fi/fu2oopiob47in3jvszj6e/Akon_-_Right_Now_-Na_Na_Na-_-Official_Video-MP3160K.mp3?rlkey=peyjm0uwfstpscxt1vbslu1yd&st=bz9ghs93&dl=1",
+"https://www.dropbox.com/scl/fi/a2fgygx0678xxlmplq400/Aqua_-_Barbie_Girl_-Official_Music_Video-MP3160K.mp3?rlkey=3dnr853sywgvwftbipf5ysph6&st=kfxbevq6&dl=1"
+];
+
+var cur_song = 0;
+function nextSong() {
+  if(songs.length > cur_song + 1) {
+  try{
+    var s = document.getElementById("my-audio");
+    document.getElementById("chn_img").src = randPer();
+    cur_song += 1;
+    s.src = songs[cur_song];
+    document.getElementsByTagName("h1")[0].querySelectorAll("marquee")[0].innerHTML = songs[cur_song].slice(53, -53);
+    s.load();
+    s.play();
+  } catch(err) {
+    alert("Audio Source Not Found");
+  }
+  } else {
+     alert(`This is last one, there is total ${cur_song+1} Songs and i am sending you first song`);
+     cur_song = 1;
+     prevSong();
+  }
+}
+
+function prevSong() {
+  if(cur_song == 0) {
+    alert(`This is starting Song`);
+    cur_song = 0;
+  } else if(songs.length > cur_song) {
+    var s = document.getElementById("my-audio");
+    document.getElementById("chn_img").src = randPer();
+    cur_song -= 1;
+    s.src = songs[cur_song];
+    document.getElementsByTagName("h1")[0].querySelectorAll("marquee")[0].innerHTML = songs[cur_song].slice(53, -53);
+    s.load();
+    s.play();
+  } else {
+    alert(`There is ${cur_song}Songs`);
+  }
+}
+
+
+function secToFor(seconds) {
+    seconds = Math.floor(seconds);
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(secs).padStart(2, '0');
+    return `${formattedMinutes}:${formattedSeconds}`;
+}
+
+
+var tempOnceEx = false;
+document.getElementById("my-audio").ontimeupdate = function(event) {
+    document.getElementById("prog").max = document.getElementById("my-audio").duration;
+    document.getElementById("prog").value = event.currentTarget.currentTime;
+    document.getElementsByClassName("btns")[0].querySelectorAll("button")[0].innerHTML = secToFor(event.currentTarget.currentTime);
+    
+  if(tempOnceEx) {
+       tempOnceEx = false;
+       return
+  } else {
+     if(event.currentTarget.currentTime >= event.currentTarget.duration - 0.5) {
+        nextSong();
+        tempOnceEx = true;
+     }
+  }
+  
+};
+
+
+function playPause() {
+  var s = document.getElementById("my-audio");
+  if(s.paused) {
+     s.play();
+     document.getElementsByClassName("btns")[0].querySelectorAll("button")[2].innerHTML = '<i class="fa-solid fa-pause"></i>';
+  } else {
+     s.pause();
+     document.getElementsByClassName("btns")[0].querySelectorAll("button")[2].innerHTML = '<i class="fa-solid fa-play"></i>';
+  }
+}
+
+
+function volOnOff() {
+  var s = document.getElementById("my-audio");
+  if(s.volume == 0) {
+     s.volume = 1;
+     document.getElementsByClassName("btns")[0].querySelectorAll("button")[4].innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+  } else {
+     s.volume = 0;
+     document.getElementsByClassName("btns")[0].querySelectorAll("button")[4].innerHTML = '<i class="fa-solid fa-volume-mute"></i>';
+  }
+}
+
+
+function mv5Plus() {
+  var s = document.getElementById("my-audio");
+  s.currentTime += 5;
+}
+
+
+function mv5Minus() {
+  var s = document.getElementById("my-audio");
+  s.currentTime -= 5;
+}
+
+
+document.getElementById("prog").addEventListener("input", function(event) {
+    const value = event.target.value;
+    document.getElementById("my-audio").currentTime = value;
+});
+
+    </script>
+  </body>
+</html>
